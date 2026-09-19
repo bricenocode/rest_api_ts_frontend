@@ -7,35 +7,40 @@ type ProductFormProps = {
 
 export default function ProductForm({product}:ProductFormProps) {
   return (
-    <>
-      <div className="mb-4">
+    <div className="grid gap-5 md:grid-cols-2">
+      <div>
           <label
-            className="text-gray-800"
+            className="field-label"
             htmlFor="name"
-          >Nombre Producto:</label>
+          >Nombre del producto</label>
           <input
             id="name"
             type="text"
-            className="mt-2 block w-full p-3 bg-gray-50"
-            placeholder="Nombre del Producto"
+            className="field-input"
+            placeholder="Ej. Monitor ultrapanorámico"
+            required
+            minLength={2}
             name="name"
             defaultValue={product?.name}
           />
         </div>
-        <div className="mb-4">
+        <div>
           <label
-            className="text-gray-800"
+            className="field-label"
             htmlFor="price"
-          >Precio:</label>
+          >Precio</label>
           <input
             id="price"
             type="number"
-            className="mt-2 block w-full p-3 bg-gray-50"
-            placeholder="Precio Producto. ej. 200, 300"
+            className="field-input"
+            placeholder="0,00"
+            min="0.01"
+            step="0.01"
+            required
             name="price"
             defaultValue={product?.price}
           />
         </div>
-    </>
+    </div>
   )
 }

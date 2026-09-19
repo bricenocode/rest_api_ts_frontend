@@ -48,3 +48,33 @@ export default tseslint.config({
   },
 })
 ```
+# Productly · Product Manager
+
+Administrador de productos con una interfaz SaaS moderna para gestionar un catálogo mediante operaciones CRUD conectadas a una API REST existente.
+
+## Funcionalidades y stack
+
+- Listado responsive con métricas, precios en EUR y badges de disponibilidad.
+- Alta, edición, cambio de disponibilidad y eliminación con confirmación.
+- Validación con Valibot, errores visibles, foco accesible y navegación responsive.
+- React 18, TypeScript, Vite, Tailwind CSS, React Router data APIs y Axios.
+
+## Configuración local
+
+Requisitos: Node.js 18+ y una API compatible con el contrato existente.
+
+```bash
+npm install
+copy .env.example .env.local
+npm run dev
+```
+
+Configura `VITE_API_URL` con el origen de la API, por ejemplo `http://localhost:4000`. El cliente consume `/api/products` y `/api/products/:id` con los métodos GET, POST, PUT, PATCH y DELETE según la operación. No se incluyen secretos en el repositorio: `.env.local` está ignorado y `.env.example` solo contiene un valor ficticio.
+
+## Scripts
+
+`npm run dev` inicia Vite · `npm run lint` ejecuta ESLint · `npm run build` valida TypeScript y genera producción · `npm run preview` sirve el build local.
+
+## Decisiones técnicas y valor de portfolio
+
+React Router concentra loaders y actions cerca de cada ruta CRUD. Axios conserva el contrato HTTP y transforma errores de red/validación en mensajes visibles mediante un error boundary. Valibot valida las respuestas antes de renderizarlas. El resultado demuestra integración REST, accesibilidad, manejo de errores y una evolución cuidada de CRUD básico a experiencia lista para uso real.

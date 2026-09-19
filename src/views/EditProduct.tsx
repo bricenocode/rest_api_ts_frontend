@@ -46,36 +46,18 @@ export default function EditProduct() {
   const product = useLoaderData() as Product
 
   return (
-    <>
-      <div className="flex justify-between">
-        <h2 className="text-4xl font-black text-slate-500">
-          Editar Producto
-        </h2>
-        <Link
-          to="/"
-          className="rounded-md bg-indigo-600 p-3 text-sm font-bold text-white shadow-sm hover:bg-indigo-500"
-        >
-          Volver a Productos
-        </Link>
-      </div>
+    <div className="mx-auto max-w-3xl"><div className="flex flex-col justify-between gap-4 border-b border-slate-200 pb-6 sm:flex-row sm:items-end"><div><p className="text-sm font-bold text-indigo-600">CATÁLOGO / EDITAR</p><h1 className="mt-2 text-3xl font-black tracking-tight text-slate-950">Editar producto</h1><p className="mt-2 text-sm text-slate-500">Actualiza la información y disponibilidad de {product.name}.</p></div><Link to="/" className="button-secondary">← Volver</Link></div>
       {error && <ErrorMessage>{error}</ErrorMessage>}
-      <Form
-        className="mt-10"
-        method='POST'
-
-      >
-        <ProductForm
-          product = {product}
-        />
+      <Form className="mt-8 rounded-2xl border border-slate-200 bg-white p-5 shadow-sm sm:p-7" method="POST"><ProductForm product={product}/>
 
         <div className="mb-4">
           <label
-            className="text-gray-800"
+            className="field-label mt-5"
             htmlFor="availability"
           >Disponibilidad:</label>
           <select
             id="availability"
-            className="mt-2 block w-full p-3 bg-gray-50"
+            className="field-input"
             name="availability"
             defaultValue={product?.availability.toString()}
           >
@@ -84,13 +66,8 @@ export default function EditProduct() {
             ))}
           </select>
         </div>
-        <input
-          type="submit"
-          className="mt-5 w-full bg-indigo-600 p-2 text-white font-bold text-lg cursor-pointer rounded"
-          value="Guardar Cambios"
-        />
-      </Form>
-    </>
+        <div className="mt-8 flex flex-col-reverse gap-3 border-t border-slate-100 pt-6 sm:flex-row sm:justify-end"><Link to="/" className="button-secondary">Cancelar</Link><button type="submit" className="button-primary">Guardar cambios</button></div></Form>
+    </div>
   )
 }
 

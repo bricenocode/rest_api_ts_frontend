@@ -4,12 +4,14 @@ import Products, {loader as productsLoader, action as updateAvailability} from '
 import NewProduct, {action as newProductAction} from './views/NewProduct'
 import EditProduct, {loader as editProductLoader, action as editProductAction} from './views/EditProduct'
 import { action as deleteProductAction } from './components/ProductDetails'
+import RouteError from './components/RouteError'
 
 
 export const router = createBrowserRouter([
   {
     path: '/',
     element: <Layout/>,
+    errorElement: <RouteError />,
     children: [
       {
         index: true,
